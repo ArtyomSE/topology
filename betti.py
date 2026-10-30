@@ -55,7 +55,7 @@ class BettiNumbersCalculator:
          * homologies_num (List) - коллекция упорядоченных значений числа Бетти H1
         '''
 
-        if epsilons == None or homologies_num == None:
+        if epsilons is None or homologies_num is None:
             epsilons, homologies_num = self.dynamics
 
         fig, axes = plt.subplots(2, 1, figsize=(10, 12))
@@ -68,7 +68,7 @@ class BettiNumbersCalculator:
 
         axes[1].plot(np.arange(epsilons.shape[0]), homologies_num, color='forestgreen')
         axes[1].set_title(r'$H_1$ dynamics', fontsize=14)
-        axes[1].set_xlabel(r'$ind(\epsilon$)', fontsize=12)
+        axes[1].set_xlabel(r'$ind(\epsilon)$', fontsize=12)
         axes[1].set_ylabel(r'$H_1$    ', rotation='horizontal', fontsize=12)
         axes[1].grid(axis='y', linestyle='--')
 

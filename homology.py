@@ -1,28 +1,10 @@
 import numpy as np
 from sklearn.metrics import pairwise_distances
-from TopologyErrors import DimensionalityError, validate_data_dimensionality
+from exceptions import validate_dimensionality
+from utils import execution_time, singleton
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from tqdm import tqdm
-import time
-
-def execution_time(func):
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        secs = time.time() - start
-
-        print(f'Execution time: {secs // 60} m. {round(secs % 60, 3)} sec.')
-        return result
-    return wrapper
-
-def singleton(cls):
-    instances = {}
-    def getinstance():
-        if cls not in instances:
-            instances[cls] = cls()
-        return instances[cls]
-    return getinstance
 
 
 @dataclass
@@ -47,11 +29,7 @@ class HomologyCalculator(ABC):
 
     @execution_time
     def compute_homologies(self, data, epsilon):
-        try:
-            validate_data_dimensionality(data)
-        except DimensionalityError as error:
-            print(error)
-            return
+        validate_dimensionality(data)
 
         self.data = data
         self.n = data.shape[0]

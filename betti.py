@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import pairwise_distances
 from ripser import ripser
+from exceptions import validate_dimensionality
+
 
 class BettiNumbersCalculator:
     def __init__(self):
@@ -9,6 +11,8 @@ class BettiNumbersCalculator:
         self.dynamics = None
 
     def compute_betti_numbers_dynamics(self, data):
+        validate_dimensionality(data) 
+
         self.data = data
 
         dynamics = ripser(

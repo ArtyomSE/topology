@@ -19,7 +19,7 @@
 ### 1. Установка зависимостей
 Перед запуском кода убедитесь, что в вашей среде установлены следующие библиотеки:
 ```bash
-pip install numpy matplotlib scikit-learn ripser persim gudhi tqdm
+pip install numpy matplotlib scikit-learn scipy ripser persim gudhi tqdm
 ```
 
 Или же воспользуйтесь альтернативной командой:

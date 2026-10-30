@@ -11,6 +11,13 @@ class BettiNumbersCalculator:
         self.dynamics = None
 
     def compute_betti_numbers_dynamics(self, data):
+        '''
+        Метод для оценки динамики числа Бетти H1 (количества гомологий)
+
+        Args:
+         * data (np.ndarray) - массив размерности n x 2 c координатами точек
+        '''
+        
         validate_dimensionality(data) 
 
         self.data = data
@@ -40,6 +47,14 @@ class BettiNumbersCalculator:
         return self.dynamics
 
     def plot_betti_numbers_dynamics(self, epsilons=None, homologies_num=None):
+        '''
+        Метод для оценки визуализации динамики числа Бетти H1 двумя способами
+    
+        Args:
+         * epsilons (List) - коллекция упорядоченных значений гиперпараметров
+         * homologies_num (List) - коллекция упорядоченных значений числа Бетти H1
+        '''
+
         if epsilons == None or homologies_num == None:
             epsilons, homologies_num = self.dynamics
 
